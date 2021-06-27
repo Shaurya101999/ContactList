@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <title>
+            <%= locals.title %>
+        </title>
+        <link rel="stylesheet" href="/css/home.css">
+        <script src="https://kit.fontawesome.com/bae341dbeb.js" crossorigin="anonymous"></script>
+
+    </head>
+    <body>
+        <h1 id="page-heading">My Contacts List</h1>
+        <div>
+            <ul>
+                <% for (let i of contact_list){ %>
+                    <li>
+                        <div class="div">
+                            <p id="name"><%= i.name %></p>
+                            <p id="p"><%= i.phone %></p><br>
+                            <br>
+                            <br>
+                            <div id="trash">
+                                <!-- String params
+                                    <a href="/delete-contact/"<%= i.phone %></a> 
+                                -->
+                                
+                                <!--Chaining query params 
+                                    <a href="/delete-contact/?phone=<%= i.phone %>&name=<%= i.name %>"></a> 
+                                -->
+                                <a href="/delete-contact/?id=<%= i._id %>">
+                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+                    </li>
+                    
+                <% } %>
+            </ul>
+        </div>
+        <br>
+        <form action="/create-contact" method="POST">
+            <input type="text" name="name" placeholder="Name" required>
+            
+            <input type="number" name="phone" placeholder="Phone" required>
+            
+            <button type="submit">Add</button>
+        </form>
+        <script type="text/javascript" src="/js/home.js">
+
+        </script>
+    </body>
+</html>
